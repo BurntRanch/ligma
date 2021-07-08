@@ -1,7 +1,7 @@
 import os
 import sys
 import types
-import importlib
+import importlib.util
 
 def import_module(module_path: str) -> types.ModuleType:
     """
