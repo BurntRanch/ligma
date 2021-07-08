@@ -1,7 +1,7 @@
 import os
 import sys
 import types
-import importlib
+import importlib as util
 
 __version__ = '0.1.1'
 
