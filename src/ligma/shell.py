@@ -1,9 +1,6 @@
 import os
-import sys
 import types
 import importlib
-
-__version__ = '0.1.0'
 
 def import_module(module_path: str) -> types.ModuleType:
     """
@@ -18,14 +15,12 @@ def import_module(module_path: str) -> types.ModuleType:
     spec.loader.exec_module(module_obj)
     return module_obj
 
-shell = import_module(f'{os.path.dirname(os.path.abspath(__file__))}{os.sep}shell.py')
+core = import_module(f'{os.path.dirname(os.path.abspath(__file__))}{os.sep}core.py')
 
-args = sys.argv
-args.pop(0)
-
-if not len(args):
-    shell.main(__version__)
-elif len(args) == 1:
-    print("Script parsing soon...")
-else:
-    print("Currently not supported!")
+def main(version):
+    print(f"Ligma {version}")
+    while True:
+        userinput = input("ligma > ")
+        result, error = core.run(userinput)
+        if error: print(error.as_string())
+        else: print(result)
