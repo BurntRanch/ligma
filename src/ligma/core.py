@@ -12,18 +12,21 @@ class Error:
         return f'[ERROR: {self.error_name}] {self.details}'
 
 
-class IllegalCharError(Error):
+class IllegalCharacter(Error):
     def __init__(self, details):
         super().__init__('IllegalCharacter', details)
 
+class KeyboardStop(Error):
+    def __init__(self):
+        super().__init__('KeyboardStop', '')
 
 ## Tokens
-TT_INT = 'TT_INT'
-TT_FLOAT = 'TT_FLOAT'
-TT_PLUS = 'TT_PLUS'
-TT_MINUS = 'TT_MINUS'
-TT_MUL = 'TT_MUL'
-TT_DIV = 'TT_DIV'
+TT_INT = 'INT'
+TT_FLOAT = 'FLOAT'
+TT_PLUS = 'PLUS'
+TT_MINUS = 'MINUS'
+TT_MUL = 'MUL'
+TT_DIV = 'DIV'
 TT_LPAREN = 'LPAREN'
 TT_RPAREN = 'RPAREN'
 
@@ -79,7 +82,7 @@ class Lexer:
             else:
                 char = self.current_char
                 self.advance()
-                return [], IllegalCharError(f"'{char}'")
+                return [], IllegalCharacter(f"'{char}'")
         return tokens, None
 
     def make_number(self):

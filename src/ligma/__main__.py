@@ -3,7 +3,7 @@ import sys
 import types
 import importlib
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 def import_module(module_path: str) -> types.ModuleType:
     """
